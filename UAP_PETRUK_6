@@ -383,7 +383,7 @@ int main() {
 	resetColor();
 	
 	cin.get();
-
+	
 	setColor(1);
 	cout << "==========================" << endl;
 	cout << "== MASUKIN   ++" << endl;
@@ -422,6 +422,7 @@ int main() {
 			typeText("4. Proses Check-out\n", 20);
 			typeText("5. Tampilkan Riwayat\n", 20);
 			typeText("6. Sorting Harga (Divide and Conquer)\n", 20);
+			typeText("7. Main menu \n", 20);
 			typeText("0. Keluar\n\n", 20);
 			typeText("Pilih menu : ", 20);
 			cin >> pilihan;
@@ -436,6 +437,7 @@ int main() {
             case 4: hotel.prosesCheckout(); break;
             case 5: hotel.tampilkanRiwayat(); break;
             case 6: fiturSortingHarga(); break;
+            case 7: goto main_menu; break;
             case 0: cout << "\nTerima kasih.\n"; break;
             default: cout << "Pilihan tidak valid.\n";
         }
@@ -489,7 +491,7 @@ int main() {
     setColor(14);
     
     cout << "=====================================" << endl;
-    cout << "    == KELOMPOK 6 ==\n";
+    cout << "    == KELOMPOK ==\n";
     cout << "=====================================" << endl;
     cout << "\n\n";
     setColor(13);
@@ -525,9 +527,7 @@ int main() {
     	
     	case 3 :
     		
-    	system ("cls");
     	LOAD2();
-    	
     		return 1;
     	break;
 	}
