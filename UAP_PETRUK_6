@@ -383,3 +383,154 @@ int main() {
 	resetColor();
 	
 	cin.get();
+
+	setColor(1);
+	cout << "==========================" << endl;
+	cout << "== MASUKIN   ++" << endl;
+	cout << "==========================" << endl;
+	resetColor();
+	
+	setColor(3);
+	cout << "== 1 : MENU " << endl;
+	cout << "== 2 : TEAM " << endl;
+	cout << "== 3 : KELUAR" << endl;
+	resetColor();
+	
+	setColor(1);
+	cout << "==========================" << endl;
+	cout << "++ yg mana ?? "; cin >> pil;
+	resetColor();
+	
+	    system ("cls");
+    
+    switch (pil){
+    	
+    	case 1 :
+    		
+    	system ("cls");
+    	LOAD2();
+    	
+    	hotels();
+    	
+    		    do {
+			setColor(14);
+			typeText("\n--- Sistem Pemesanan Hotel ---\n\n", 25);
+			setColor(7);
+			typeText("1. Tampilkan Kamar\n", 20);
+			typeText("2. Pesan Kamar\n", 20);
+			typeText("3. Proses Check-in\n", 20);
+			typeText("4. Proses Check-out\n", 20);
+			typeText("5. Tampilkan Riwayat\n", 20);
+			typeText("6. Sorting Harga (Divide and Conquer)\n", 20);
+			typeText("0. Keluar\n\n", 20);
+			typeText("Pilih menu : ", 20);
+			cin >> pilihan;
+			cin.ignore();
+			
+			system ("cls");
+
+        switch (pilihan) {
+            case 1: hotel.tampilkanKamar(); break;
+            case 2: hotel.pesanKamar(); break;
+            case 3: hotel.prosesCheckin(); break;
+            case 4: hotel.prosesCheckout(); break;
+            case 5: hotel.tampilkanRiwayat(); break;
+            case 6: fiturSortingHarga(); break;
+            case 0: cout << "\nTerima kasih.\n"; break;
+            default: cout << "Pilihan tidak valid.\n";
+        }
+    } while (pilihan != 0);
+    		break;
+    	
+    	case 2 :
+    		
+    	system ("cls");
+    	LOAD2();
+    		
+    		char pil2;
+    		
+    		    setColor(9);  
+    cout << "==========================================================\n"; 
+    resetColor();
+    
+    setColor(12); 
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n";
+    cout << "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == \n";
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n"; 
+    resetColor();
+    
+    cout << " --------------------------------------------------------\n";
+    
+    setColor(12);  
+    cout << "    ++   ++  ++      ++++++     +++++++  ++++++          \n";
+    cout << "    ++   ++          ++   +++   ++       ++  +++         \n";
+    cout << "    +++++++  ++      ++     ++  +++++    ++    ++        \n";
+    cout << "    +++++++  ++      ++     ++  +++++    ++  +++         \n";
+    cout << "    ++   ++  ++      ++   +++   ++       ++  ++          \n";
+    cout << "    ++   ++  ++      ++++++     +++++++  ++   ++         \n";
+    resetColor();
+    
+    cout << " --------------------------------------------------------\n"; 
+    
+    setColor(12);  
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n";
+    cout << "  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  == \n";
+    cout << "    ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  ==  \n"; 
+    resetColor();
+    
+    setColor(9);  
+    cout << "==========================================================\n";
+    resetColor();
+    
+    Sleep(3000);
+    
+    system("cls");  
+    
+    setColor(14);
+    
+    cout << "=====================================" << endl;
+    cout << "    == KELOMPOK 6 ==\n";
+    cout << "=====================================" << endl;
+    cout << "\n\n";
+    setColor(13);
+    typeText("1. Ruddy Haristianata \n", 40);
+    typeText("-> 2457051011 \n\n", 40);
+    
+    typeText("2. Wildan Humam Alpasya \n", 40);
+    typeText("-> 2417051064 \n\n", 40);
+    
+    typeText("3. Reggy Desvita Kamal \n", 40);
+    typeText("-> 2417051016 \n\n", 40);
+    
+    typeText("4. Zahra Ayesa \n", 40);
+    typeText("-> 2417051027 \n\n", 40);
+    
+    setColor(14);
+    cout << "=====================================" << endl;
+    cout << "=++==               +==-=         _+=" << endl;      
+    cout << "=====================================" << endl;
+    
+    
+    cout << "Ingin kembali ke menu utama (y/n)? "; cin >> pil2;
+    
+    if ( pil2 == 'y' || pil2 == 'Y'){
+    	goto main_menu;
+	} 
+	
+	else if ( pil2 == 'n' || pil2 == 'N'){
+		system("cls");
+		cin.get();
+	}
+    	break;
+    	
+    	case 3 :
+    		
+    	system ("cls");
+    	LOAD2();
+    	
+    		return 1;
+    	break;
+	}
+   
+    return 0;
+}
