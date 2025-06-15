@@ -125,3 +125,159 @@ void LOAD2(){
             setColor(9); 
             	
 }
+struct Kamar {
+    int id;
+    char namaTamu[30];
+    string jenis;
+    int harga;
+    bool tersedia;
+};
+
+
+class Pemesanan {
+private:
+    vector<Kamar> dataKamar;
+    list<string> riwayatTamu;
+    queue<string> antrianCheckin;
+    stack<string> historiPembayaran;
+
+public:
+    
+    Pemesanan() {
+        inisialisasiKamar();
+    }
+
+    
+    void inisialisasiKamar();
+    void tampilkanKamar();
+    void pesanKamar();
+    void prosesCheckin();
+    void prosesCheckout();
+    void tampilkanRiwayat();
+};
+
+void Pemesanan::inisialisasiKamar() {
+    string jenis[3] = {"Single", "Double", "Suite "};
+    int harga[3] = {250000, 350000, 500000};
+    for (int i = 0; i < 6; i++) {
+        Kamar k;
+        k.id = i+1;
+        strcpy(k.namaTamu, "");
+        k.jenis = jenis[i % 3];
+        k.harga = harga[i % 3];
+        k.tersedia = true;
+        dataKamar.push_back(k);
+    }
+}
+
+void Pemesanan::tampilkanKamar() {
+    system("cls");
+    setColor(14);
+    typeText("\nDaftar Kamar:\n\n", 25);
+    setColor(7);
+    for (auto &k : dataKamar) {
+        string status = k.tersedia ? "Tersedia" : k.namaTamu;
+        typeText("ID: " + to_string(k.id) + " | Jenis: " + k.jenis +
+                 " | Harga: Rp" + to_string(k.harga) + " | Status: " + status + "\n", 20);
+    }
+}
+
+void Pemesanan::pesanKamar() {
+    system("cls");
+    int id;
+    char nama[30];
+    tampilkanKamar();
+
+    setColor(14);
+    typeText("\nMasukkan ID kamar yang ingin dipesan: ", 25);
+    cin >> id;
+    cin.ignore();
+
+    if (id < 1 || id > dataKamar.size() || !dataKamar[id - 1].tersedia) {
+        setColor(12);
+        typeText("Kamar tidak tersedia atau ID salah.\n", 30);
+        return;
+    }
+
+    setColor(14);
+    typeText("Masukkan nama tamu: ", 25);
+    cin.getline(nama, 30);
+
+    strncpy(dataKamar[id - 1].namaTamu, nama, 30);
+    dataKamar[id - 1].tersedia = false;
+
+    historiPembayaran.push(nama);
+    antrianCheckin.push(nama);
+    riwayatTamu.push_back(nama);
+
+    setColor(10);
+    typeText("\nKamar berhasil dipesan atas nama: ", 25);
+    cout << nama << endl;
+    cin.get();
+    system ("cls");
+}
+
+void Pemesanan::prosesCheckin() {
+    system("cls");
+
+    setColor(14);
+    cout << "\n";
+    typeText("===========++==================================++===========\n", 2);
+    typeText("||                    HOTEL CHECK-IN                      ||\n", 2);
+    typeText("===========++==================================++===========\n\n", 2);
+
+    if (antrianCheckin.empty()) {
+        setColor(12);
+        typeText(">>> Tidak ada tamu dalam antrian check-in <<<\n\n", 30);
+    } else {
+        string tamu = antrianCheckin.front();
+        antrianCheckin.pop();
+
+        setColor(10);
+        typeText("Memproses check-in untuk tamu: ", 20);
+        setColor(11);
+        typeText(tamu + "\n", 30);
+
+        typeText("\nMempersiapkan kamar", 20);
+        for (int i = 0; i < 3; i++) {
+            cout << ". " << flush;
+            Sleep(400);
+        }
+        cout << "\n";
+
+        setColor(14);
+        typeText(">>> Check-in berhasil! Selamat datang dan selamat beristirahat. <<<\n", 25);
+    }
+
+    setColor(7);
+    typeText("\nTekan ENTER untuk kembali ke menu utama...", 15);
+    cin.get();
+    
+    system("cls");
+}
+
+
+void Pemesanan::prosesCheckout() {
+    system("cls");
+    int id;
+    setColor(14);
+    typeText("\nMasukkan ID kamar untuk check-out: ", 25);
+    cin >> id;
+    cin.ignore();
+
+    if (id < 1 || id > dataKamar.size() || dataKamar[id - 1].tersedia) {
+        setColor(12);
+        typeText("ID tidak valid atau kamar sudah kosong.\n", 25);
+        return;
+    }
+
+    setColor(14);
+    typeText("Tamu atas nama ", 25);
+    cout << dataKamar[id - 1].namaTamu;
+    typeText(" telah check-out.\n", 25);
+
+    strcpy(dataKamar[id - 1].namaTamu, "");
+    dataKamar[id - 1].tersedia = true;
+    
+    cin.get();
+}
