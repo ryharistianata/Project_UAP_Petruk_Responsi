@@ -281,3 +281,105 @@ void Pemesanan::prosesCheckout() {
     
     cin.get();
 }
+
+void Pemesanan::tampilkanRiwayat() {
+    system("cls");
+    setColor(14);
+    typeText("\nRiwayat Tamu (List):\n", 25);
+    setColor(7);
+    for (auto &nama : riwayatTamu) {
+        typeText("- " + nama + "\n", 20);
+    }
+
+    setColor(14);
+    typeText("\nHistori Pembayaran Terakhir (Stack): ", 25);
+    setColor(7);
+    if (!historiPembayaran.empty()) {
+        typeText(historiPembayaran.top() + "\n", 25);
+    } else {
+        typeText("Tidak ada pembayaran.\n", 25);
+    }
+}
+
+
+void merge(vector<int> &v, int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    vector<int> L(n1), R(n2);
+
+    for (int i = 0; i < n1; i++) L[i] = v[l + i];
+    for (int j = 0; j < n2; j++) R[j] = v[m + 1 + j];
+
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) v[k++] = L[i++];
+        else v[k++] = R[j++];
+    }
+    while (i < n1) v[k++] = L[i++];
+    while (j < n2) v[k++] = R[j++];
+}
+
+void mergeSort(vector<int> &v, int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(v, l, m);
+        mergeSort(v, m + 1, r);
+        merge(v, l, m, r);
+    }
+}
+
+void fiturSortingHarga() {
+    system("cls");
+    vector<int> harga = {350000, 250000, 500000, 250000, 500000};
+    mergeSort(harga, 0, harga.size() - 1);
+
+    setColor(14);
+    typeText("\nHarga kamar setelah diurutkan (Divide & Conquer): ", 25);
+    setColor(7);
+    for (int h : harga) {
+        typeText(to_string(h) + " ", 20);
+    }
+    cout << endl;
+}
+
+// === Main Program ===
+int main() {
+    Pemesanan hotel;
+    int pilihan, pil;
+    
+    LOAD1();
+    
+    main_menu :
+    	
+        system("cls");
+    
+    setColor(1);
+    cout << "		                       ======================" << endl;
+    resetColor(); 
+    
+    setColor(3);
+    cout << "                                          SHUP BROHH !! " << endl; 
+    resetColor();
+    
+    
+    setColor(1);
+	cout << "                                   ======================   " << endl; 
+	resetColor();
+	
+	cin.get(); 
+	
+	cout << "\n\n\n";
+	
+	setColor(1);
+	cout << "============================================" << endl;
+	resetColor();
+	
+	setColor(3);
+	cout << "   ==  SELAMAT DATANG DI MAIN MENU ++" << endl;
+	resetColor();
+	
+	setColor(1);
+	cout << "=======================================\n" << endl;
+	resetColor();
+	
+	cin.get();
