@@ -2,5 +2,5 @@
 
 Wildan Humam Alpasya
 Ruddy Haristianata
-Reggy Desfita Sari
-Zahra Ayesa
+Reggy Desvita Kamal
+Zahra Ayesha
