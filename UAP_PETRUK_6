@@ -1,1 +1,127 @@
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <vector>
+#include <list>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <ncurses/curses.h>
+#include <cstdlib>
+#include <windows.h>
 
+using namespace std;
+
+void setColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void resetColor() {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+}
+
+void typeText(const string& text, int delay = 30) {
+    for (char c : text) {
+        cout << c << flush;
+        Sleep(delay);
+    }
+}
+
+void hotels(){
+
+    string gass[] = {
+        "                     * * * * *                    ",
+        "              WELLCOME TO WELL HOTEL              ",
+        "==================================================",
+        "|################################################|",
+        "|#                                              #|",
+        "|#             +-------------------+            #|",
+        "|#             |    FRONT DESK     |            #|",
+        "|#             +-------------------+            #|",
+        "|#                                              #|",
+        "|#                                              #|",
+        "|#   |||||||||||||||||||||||||||||||||||||      #|",
+        "|#   |                                   |      #|",
+        "|#   |       RED CARPET ENTRANCE         |      #|",
+        "|#   |                                   |      #|",
+        "|#   |||||||||||||||||||||||||||||||||||||      #|",
+        "|################################################|",
+        "=================================================="
+    };
+
+    system("cls");
+
+    for (int i = 0; i < 16; i++) {
+        if (i == 1) setColor(14);                   
+        else if (i >= 5 && i <= 8) setColor(11);    
+        else if (i >= 11 && i <= 13) setColor(12);  
+        else setColor(7);                           
+
+        cout << gass[i] << endl;
+        Sleep(100); 
+    }
+    
+}
+
+void LOAD1(){ 
+    initscr();
+
+    curs_set(0);
+    
+    string loading = "=== || LOADING ||                   ";
+
+    for(int i = 0; i < 27; i++){
+        mvprintw(2,i, "=");
+        mvprintw(3,i + 5, "%c", loading[i]);
+        mvprintw(4,i + 2, "===");
+        mvprintw(5,i + 5, "%c", loading[i]); 
+        mvprintw(6,i, "=");
+
+        refresh();
+        Sleep(100);
+    }
+
+    for(int i = 1; i <= 100; i++){
+        mvprintw(3, 23, "%d", i);
+        mvprintw(5, 23, "%d", i);
+        mvprintw(3, 26, "%%");
+        mvprintw(5, 26, "%%");
+        refresh();
+        Sleep(50);
+    }
+
+    clear();
+    curs_set(1);
+    endwin();
+}
+
+void LOAD2(){
+	        	        	system ("cls");
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+	
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(12);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+
+        	  		  setColor(9);
+  						  for (int i = 0; i < 5000; i++){
+  						  	cout << " ||  LOADING  || ";
+								} 
+						resetColor();
+						 system ("cls");
+            
+            setColor(9); 
+            	
+}
